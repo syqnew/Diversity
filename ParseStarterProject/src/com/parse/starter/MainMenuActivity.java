@@ -70,14 +70,14 @@ public class MainMenuActivity extends BaseActivity {
 		settings = (Button) findViewById(R.id.settings_button_mm);
 		settings.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (isOnline()) {
+//				if (isOnline()) {
 					Intent intent = new Intent(MainMenuActivity.this,
 							SettingsActivity.class);
 					MainMenuActivity.this.finish();
 					startActivity(intent);
-				} else {
-					showWarningDialog(R.string.no_internet_connection);
-				}
+//				} else {
+//					showWarningDialog(R.string.no_internet_connection);
+//				}
 			}
 		});
 	}
@@ -133,14 +133,14 @@ public class MainMenuActivity extends BaseActivity {
 		inventory.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (isOnline()) {
+//				if (isOnline()) {
 					Intent intent = new Intent(MainMenuActivity.this,
 							InventoryActivity.class);
 					MainMenuActivity.this.finish();
 					startActivity(intent);
-				} else {
-					showWarningDialog(R.string.no_internet_connection);
-				}
+//				} else {
+//					showWarningDialog(R.string.no_internet_connection);
+//				}
 			}
 		});
 	}

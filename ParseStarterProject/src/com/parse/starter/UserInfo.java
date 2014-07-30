@@ -39,7 +39,13 @@ public class UserInfo extends ParseObject {
 		put("charactersCollected", emptyList);
 		put("shuffledWord", "");
 		put("puzzleID", "1");
-		saveEventually();
+		
+		ParseObject.unpinAllInBackground("UserInfo");
+		List<UserInfo> currentUserInfo = new ArrayList<UserInfo>();
+		currentUserInfo.add(this);
+		ParseObject.pinAllInBackground("UserInfo", currentUserInfo);
+		
+//		saveEventually();
 	}
 
 	// FIXME

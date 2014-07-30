@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.parse.ParseClassName;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -26,11 +27,14 @@ public class User extends ParseUser {
 	}
 
 	public UserInfo getUserInfo() {
-		String usernmae = getString("username");
+		String username = getString("username");
 		ParseQuery<UserInfo> query = ParseQuery.getQuery(UserInfo.class);
-		query.whereEqualTo("username", usernmae);
+		query.whereEqualTo("username", username);
+		query.fromLocalDatastore();
 		try {
+			ParseObject.unpinAllInBackground("UserInfo");
 			List<UserInfo> results = query.find();
+			ParseObject.pinAllInBackground("UserInfo", results);
 			return results.get(0);
 		} catch (ParseException e) {
 			e.printStackTrace();
